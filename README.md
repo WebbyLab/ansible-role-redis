@@ -6,8 +6,9 @@ Ansible role for redis db (Ubuntu server).
 Role Variables
 --------------
 
-    redis_password: 6Ja2E7T8TG
-    redis_bind: 0.0.0.0
+    redis_password: password
+    redis_bind: 127.0.0.1
+    set_redis_password: 0
 
 Example Playbook
 ----------------
@@ -16,7 +17,7 @@ Example Playbook
       roles:
          - role: webbylab.redis
            redis_bind: 0.0.0.0
-           redis_password: 6Ja2E7T8TG
+           redis_password: password
            set_redis_password: 0
 
 License
