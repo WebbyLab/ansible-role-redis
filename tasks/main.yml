@@ -10,7 +10,11 @@
 
  - name: Set redis password
    lineinfile: 'regexp="^requirepass .*" line="requirepass {{redis_password}}" dest=/etc/redis/redis.conf state=present'
-   when: set_redis_password == 1
+   when: redis_password_present == 1
+
+ - name: Unset redis password
+   lineinfile: 'regexp="^requirepass .*" line="" dest=/etc/redis/redis.conf state=present'
+   when: redis_password_present == 0
 
  - name: restart redis
    service: name=redis-server state=restarted
