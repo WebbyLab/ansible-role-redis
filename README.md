@@ -1,4 +1,4 @@
-logrotate
+Redis
 =========
 
 Ansible role for redis db (Ubuntu server).
