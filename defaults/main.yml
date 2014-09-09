@@ -1,0 +1,4 @@
+---
+redis_bind: 0.0.0.0
+set_redis_password: 0
+redis_password: some_pass
