@@ -1,0 +1,20 @@
+---
+ - name: Add the Redis PPA
+   apt_repository: repo='ppa:rwky/redis' update_cache=yes
+
+ - name: Install Redis from PPA
+   apt: pkg=redis-server state=installed
+
+ - name: Bind redis to specific network interface
+   lineinfile: 'regexp="^bind (\d\.)*" line="bind {{redis_bind}}" dest=/etc/redis/redis.conf state=present'
+
+ - name: Set redis password
+   lineinfile: 'regexp="^requirepass .*" line="requirepass {{redis_password}}" dest=/etc/redis/redis.conf state=present'
+   when: redis_password_present == 1
+
+ - name: Unset redis password
+   lineinfile: 'regexp="^requirepass .*" dest=/etc/redis/redis.conf state=absent'
+   when: redis_password_present == 0
+
+ - name: restart redis
+   service: name=redis-server state=restarted
