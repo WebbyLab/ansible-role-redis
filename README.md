@@ -15,7 +15,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - role: webbylab.redis
+         - role: WebbyLab.redis
            redis_bind: 0.0.0.0
            redis_password: password
            redis_password_present: 1
